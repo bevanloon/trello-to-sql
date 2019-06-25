@@ -27,4 +27,6 @@ def print_boards
   end
 end
 
-print_boards
+def board(board_id)
+  json_response "boards/#{board_id}"
+end
