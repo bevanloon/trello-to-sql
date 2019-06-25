@@ -1,5 +1,6 @@
 require 'faraday'
 require './secrets'
+require './database'
 require 'json'
 
 include Secrets
@@ -33,4 +34,12 @@ end
 
 def cards_for_board(board_id)
   json_response "boards/#{board_id}/cards"
+end
+
+def push_cards_to_db(board_id)
+  data = Database.new
+  cards = cards_for_board(board_id)
+  cards.each do | card |
+    data.insert_card(card["name"], card["desc"])
+  end
 end
