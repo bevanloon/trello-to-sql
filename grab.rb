@@ -21,12 +21,16 @@ def boards
   json_response "members/me/boards"
 end
 
+def board(board_id)
+  json_response "boards/#{board_id}"
+end
+
 def print_boards
   boards.each do |board|
     puts "#{board["id"]}, #{board["name"]}"
   end
 end
 
-def board(board_id)
-  json_response "boards/#{board_id}"
+def cards_for_board(board_id)
+  json_response "boards/#{board_id}/cards"
 end
