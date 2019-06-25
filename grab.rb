@@ -43,3 +43,24 @@ def push_cards_to_db(board_id)
     data.insert_card(card["name"], card["desc"])
   end
 end
+
+def control(args)
+  if args.any?
+    action = args[0]
+    option = args[1] if args[1]
+    case action
+    when "boards"
+      print_boards
+    when "board"
+      puts board(option)
+    when "cards"
+      puts cards_for_board(option)
+    when "savecards"
+      push_cards_to_db(option)
+    end
+  else
+    puts "No args"
+  end
+end
+
+control ARGV
