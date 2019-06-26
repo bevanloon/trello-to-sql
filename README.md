@@ -1,5 +1,3 @@
-# Trello Thing
-
 Quick and dirty ruby api interaction with Trello to persist cards for a table into a sqlite3 database file.
 
 ## Usage
@@ -31,3 +29,13 @@ This is the real reason for the script. This persists the title and description 
 ## Dependencies
 
 Relies on `faraday` and `sqlite3`. You should be able to `bundle` to install these.
+
+## Limitations
+
+Trello imposes some [rate limiting on api
+calls](https://help.trello.com/article/838-api-rate-limits). This is not handled at the
+moment.
+
+If your board has more than 1000 cards, the Trello API expects you to [page
+through the
+results](https://developers.trello.com/docs/api-introduction#section-paging). This is not implemented.
